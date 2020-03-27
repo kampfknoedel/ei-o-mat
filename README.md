@@ -10,9 +10,9 @@ Quellen:
 
 Zwischenziele:
 
- > Timerfunktion?
+>> Timerfunktion?
 
- > Formel zur Berechnung der Zeit:
+>> Formel zur Berechnung der Zeit:
    Formel von Charles Williams  https://www.eierfans.de/eirechner-wie-lange-eier-kochen/
      t = L*m^(2/3)*ln(0.76 *(T_wasser-T_start)/(T_wasser-T_ende))
      L   ist abhängig von den Eigelb und Eiklar (Eigelb: L = 0.517, Eiklar: L = 0.450)
@@ -23,7 +23,7 @@ Zwischenziele:
      t = 0.47211*m^(2/3)*ln(0.76 *(T_wasser-T_start)/(T_wasser-T_ende)) * 0,9
      Nach ausgiebigen Tests kann der Korrekturfaktor 0,9 noch angepasst werden.
     
- > Welche Abfragen braucht man? Wie beeinflussen diese die Kochzeit?
+>> Welche Abfragen braucht man? Wie beeinflussen diese die Kochzeit?
        Benötigte größen für Formel: 
          > Masse
          > Wassertemperatur
