@@ -16,8 +16,21 @@ public:
     ~MainWindow();
 
 public slots:
-    void CalcWeightInGramm(QString *Eggsize);
+
     QString CalcSize(int Weight);
+
+private slots:
+    void on_ButtonSizeS_clicked();
+
+    void on_ButtonSizeM_clicked();
+
+    void on_ButtonSizeL_clicked();
+
+    void on_ButtonSizeXL_clicked();
+
+    void on_spinBox_textChanged(const QString &arg1);
+
+    void on_ButtonSizeOstrich_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -3,27 +3,13 @@
 #include <QPushButton>
 #include <QString>
 #include <QStringBuilder>
+#include <QLabel>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->setFixedSize(500,500);
-
-    QPushButton *neuerknopf = new QPushButton("Test", this);
-    neuerknopf->setGeometry(20, 120, 50, 30);
-    connect(neuerknopf, SIGNAL(clicked()), qApp, SLOT(quit()));
-
-
-    connect(neuerknopf, SIGNAL(clicked()), qApp, SLOT(CalcWeightInGramm(S));
-    connect(neuerknopf, SIGNAL(clicked()), qApp, SLOT(quit()));
-    connect(neuerknopf, SIGNAL(clicked()), qApp, SLOT(quit()));
-    connect(neuerknopf, SIGNAL(clicked()), qApp, SLOT(quit()));
-    connect(neuerknopf, SIGNAL(clicked()), qApp, SLOT(quit()));
-    connect(neuerknopf, SIGNAL(clicked()), qApp, SLOT(quit()));
-    connect(neuerknopf, SIGNAL(clicked()), qApp, SLOT(quit()));
-
 }
 
 MainWindow::~MainWindow()
@@ -31,29 +17,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::CalcWeightInGramm(QString *Eggsize)
-{
-    QString comp = "S";
-    if (Eggsize == comp){      //Eggsize "S" entspricht ca. 48g
-        ui->InputWeight->setText(tr("48 g"));
-
-    }
-    comp = "M";
-    if (Eggsize == comp){      //Eggsize "M" entspricht ca. 58g
-        return 58;
-    }
-    comp = "L";
-    if (Eggsize == comp){      //Eggsize "L" entspricht ca. 68g
-        return 68;
-    }
-    comp = "XL";
-    if (Eggsize == comp){      //Eggsize "XL" entspricht ca. 78g
-        return 78;
-    }
-
-    else
-        return 0;
-}
 
 QString MainWindow::CalcSize(int Weight)
 {
@@ -73,4 +36,62 @@ QString MainWindow::CalcSize(int Weight)
         return "error";
     }
 }
-int tBoilInSec (int Eggsize, )
+//int tBoilInSec (int Eggsize)
+
+void MainWindow::on_ButtonSizeS_clicked()
+{
+    ui->spinBox->setValue(48);
+}
+
+void MainWindow::on_ButtonSizeM_clicked()
+{
+    ui->spinBox->setValue(58);
+}
+
+void MainWindow::on_ButtonSizeL_clicked()
+{
+    ui->spinBox->setValue(68);
+}
+
+void MainWindow::on_ButtonSizeXL_clicked()
+{
+    ui->spinBox->setValue(78);
+}
+void MainWindow::on_ButtonSizeOstrich_clicked()
+{
+    ui->spinBox->setValue(1500);
+}
+
+void MainWindow::on_spinBox_textChanged(const QString &arg1)
+{
+    ui->ButtonSizeS->setAutoExclusive(false);
+    ui->ButtonSizeM->setAutoExclusive(false);
+    ui->ButtonSizeL->setAutoExclusive(false);
+    ui->ButtonSizeXL->setAutoExclusive(false);
+    ui->ButtonSizeS->setChecked(false);
+    ui->ButtonSizeM->setChecked(false);
+    ui->ButtonSizeL->setChecked(false);
+    ui->ButtonSizeXL->setChecked(false);
+    ui->ButtonSizeS->setAutoExclusive(true);
+    ui->ButtonSizeM->setAutoExclusive(true);
+    ui->ButtonSizeL->setAutoExclusive(true);
+    ui->ButtonSizeXL->setAutoExclusive(true);
+
+    int i = ui->spinBox->value();
+
+    if ((43 <= i) && (i < 53)){
+        ui->ButtonSizeS->setChecked(true);
+    }
+    if ((53 <= i) && (i < 63)){
+        ui->ButtonSizeM->setChecked(true);
+    }
+    if ((63 <= i) && (i < 73)){
+        ui->ButtonSizeL->setChecked(true);
+    }
+    if ((73 <= i) && (i < 83)){
+        ui->ButtonSizeXL->setChecked(true);
+    }
+    if ((1300 <= i) && (i < 1900)){
+        ui->ButtonSizeXL->setChecked(true);
+    }
+}
