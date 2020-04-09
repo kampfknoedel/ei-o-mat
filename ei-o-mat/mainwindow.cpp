@@ -18,24 +18,7 @@ MainWindow::~MainWindow()
 }
 
 
-QString MainWindow::CalcSize(int Weight)
-{
-    if (43 <= Weight && Weight < 53){
-        return "S";
-    }
-    if (53 <= Weight && Weight < 63){
-        return "M";
-    }
-    if (63 <= Weight && Weight < 73){
-        return "L";
-    }
-    if (73 <= Weight && Weight < 83){
-        return "XL";
-    }
-    else {
-        return "error";
-    }
-}
+
 //int tBoilInSec (int Eggsize)
 
 void MainWindow::on_ButtonSizeS_clicked()
