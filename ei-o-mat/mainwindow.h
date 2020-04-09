@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include <QString>
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -15,7 +15,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+    void CalcWeightInGramm(QString *Eggsize);
+    QString CalcSize(int Weight);
+
 private:
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
+
+
