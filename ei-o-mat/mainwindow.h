@@ -17,7 +17,7 @@ public:
 
 public slots:
 
-    QString CalcSize(int Weight);
+
 
 private slots:
     void on_ButtonSizeS_clicked();
