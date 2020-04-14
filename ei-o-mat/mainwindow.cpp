@@ -51,14 +51,17 @@ void MainWindow::on_spinBox_textChanged(const QString &arg1)
     ui->ButtonSizeM->setAutoExclusive(false);
     ui->ButtonSizeL->setAutoExclusive(false);
     ui->ButtonSizeXL->setAutoExclusive(false);
+    ui->ButtonSizeOstrich->setAutoExclusive(false);
     ui->ButtonSizeS->setChecked(false);
     ui->ButtonSizeM->setChecked(false);
     ui->ButtonSizeL->setChecked(false);
     ui->ButtonSizeXL->setChecked(false);
+    ui->ButtonSizeOstrich->setChecked(false);
     ui->ButtonSizeS->setAutoExclusive(true);
     ui->ButtonSizeM->setAutoExclusive(true);
     ui->ButtonSizeL->setAutoExclusive(true);
     ui->ButtonSizeXL->setAutoExclusive(true);
+    ui->ButtonSizeOstrich->setAutoExclusive(true);
 
     int i = ui->spinBox->value();
 
@@ -75,6 +78,6 @@ void MainWindow::on_spinBox_textChanged(const QString &arg1)
         ui->ButtonSizeXL->setChecked(true);
     }
     if ((1300 <= i) && (i < 1900)){
-        ui->ButtonSizeXL->setChecked(true);
+        ui->ButtonSizeOstrich->setChecked(true);
     }
 }
