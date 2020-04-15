@@ -146,17 +146,6 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-<<<<<<< HEAD
-      <x>190</x>
-      <y>260</y>
-      <width>47</width>
-      <height>14</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-=======
       <x>20</x>
       <y>190</y>
       <width>240</width>
@@ -395,7 +384,6 @@
       <widget class="QSpinBox" name="spinBox_2"/>
      </item>
     </layout>
->>>>>>> 3e703f1f57b97b7cd3e1bffeac7a617dba8264e9
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

@@ -29,13 +29,16 @@ void MainWindow::calc_time()
     qreal T_ende = 0;       // Berechung in abhängigkeit von Garzustand des Eigelbs
 
     qreal time = L*qPow(mass, (2/3)) * qLn(0.76*(T_wasser-T_start)/(T_wasser-T_ende));
-    ui->label->setText()
+    QString output;
+    output.number(time);
+    ui->label->setText(output);
 }
 
 
 void MainWindow::on_ButtonSizeS_clicked()
 {
     ui->spinBox->setValue(48);
+    calc_time();
 }
 
 void MainWindow::on_ButtonSizeM_clicked()
