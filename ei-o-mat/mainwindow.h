@@ -32,6 +32,8 @@ private slots:
 
     void on_ButtonSizeOstrich_clicked();
 
+    void calc_time();
+
 private:
     Ui::MainWindow *ui;
 };

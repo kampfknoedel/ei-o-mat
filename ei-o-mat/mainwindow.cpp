@@ -4,6 +4,7 @@
 #include <QString>
 #include <QStringBuilder>
 #include <QLabel>
+#include <QtMath>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -19,7 +20,18 @@ MainWindow::~MainWindow()
 
 
 
-//int tBoilInSec (int Eggsize)
+void MainWindow::calc_time()
+{
+    qreal L = 0.47311;   // Constante abhängig von Wärmewiderstand und Wärmekapazität von Eigelb und Eiklar
+    qreal mass = ui->spinBox->value();
+    qreal T_wasser = 0;     // Berechung in abhängigkeit von der eingabe hähe über Null
+    qreal T_start = 0;      // Berechung in abhängigkeit der eingabe (Temperatur oder Kühlschrank)
+    qreal T_ende = 0;       // Berechung in abhängigkeit von Garzustand des Eigelbs
+
+    qreal time = L*qPow(mass, (2/3)) * qLn(0.76*(T_wasser-T_start)/(T_wasser-T_ende));
+    ui->label->setText()
+}
+
 
 void MainWindow::on_ButtonSizeS_clicked()
 {

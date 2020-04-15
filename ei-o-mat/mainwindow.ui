@@ -113,7 +113,7 @@
      <string> g</string>
     </property>
     <property name="prefix">
-     <string> </string>
+     <string/>
     </property>
     <property name="minimum">
      <number>10</number>
@@ -141,6 +141,19 @@
     </property>
     <property name="text">
      <string>Straußen Ei</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>260</y>
+      <width>47</width>
+      <height>14</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
     </property>
    </widget>
   </widget>
