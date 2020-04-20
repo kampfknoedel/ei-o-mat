@@ -1,10 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "Eiertimer.h"
 #include <QPushButton>
 #include <QString>
 #include <QStringBuilder>
 #include <QLabel>
 #include <QtMath>
+#include <QComboBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -96,3 +98,13 @@ void MainWindow::on_spinBox_textChanged(const QString &arg1)
         ui->ButtonSizeOstrich->setChecked(true);
     }
 }
+
+void MainWindow::on_start_Timer_clicked()
+{
+    //window();
+    QWidget *w=new Eiertimer;
+    Eiertimer *neuesFester = new Eiertimer(w);
+    w->show();
+}
+
+

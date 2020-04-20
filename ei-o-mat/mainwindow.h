@@ -34,6 +34,8 @@ private slots:
 
     void calc_time();
 
+    void on_start_Timer_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
