@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
 }
 
 MainWindow::~MainWindow()
@@ -34,6 +35,8 @@ void MainWindow::calc_time()
     QString output;
     output.number(time);
     ui->label->setText(output);
+    emit valueChanged(time);
+
 }
 
 
@@ -108,3 +111,8 @@ void MainWindow::on_start_Timer_clicked()
 }
 
 
+
+void MainWindow::on_calculatedTime_overflow()
+{
+
+}

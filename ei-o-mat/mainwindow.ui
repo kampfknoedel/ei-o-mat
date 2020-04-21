@@ -230,7 +230,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QLCDNumber" name="lcdNumber">
+   <widget class="QLCDNumber" name="calculatedTime">
     <property name="geometry">
      <rect>
       <x>510</x>

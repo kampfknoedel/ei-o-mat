@@ -17,7 +17,8 @@ public:
 
 public slots:
 
-
+signals:
+    void valueChanged(qreal boilingtime);
 
 private slots:
     void on_ButtonSizeS_clicked();
@@ -35,6 +36,8 @@ private slots:
     void calc_time();
 
     void on_start_Timer_clicked();
+
+    void on_calculatedTime_overflow();
 
 private:
     Ui::MainWindow *ui;
