@@ -23,16 +23,21 @@ void MainWindow::calc_time()
 {
     qreal L = 0.47311;   // Constante abhängig von Wärmewiderstand und Wärmekapazität von Eigelb und Eiklar
     qreal mass = ui->spinBox->value();
-    qreal T_wasser = 0;     // Berechung in abhängigkeit von der eingabe hähe über Null
-    qreal T_start = 0;      // Berechung in abhängigkeit der eingabe (Temperatur oder Kühlschrank)
-    qreal T_ende = 0;       // Berechung in abhängigkeit von Garzustand des Eigelbs
-    qreal Altitude=ui->altitude->value();
-    qDebug() <<Altitude*mass<<endl;
+    qreal T_wasser = 100 - (0.003354 * ui->altitude->value());     // Berechung in abhängigkeit von der eingabe höhe über Null
+    qreal T_start = ui->spinBoxStarttemp->value();      // Berechung in abhängigkeit der eingabe (Temperatur oder Kühlschrank)
+    qreal T_ende = ui->dial->value();       // Berechung in abhängigkeit von Garzustand des Eigelbs
+
+    //qreal Altitude=ui->altitude->value();
+    //qDebug() <<Altitude*mass<<endl;
 
     qreal time = L*qPow(mass, (2/3)) * qLn(0.76*(T_wasser-T_start)/(T_wasser-T_ende));
     QString output;
     output.number(time);
-    ui->label->setText(output);
+
+    ui->calculatedTime->display(time);
+
+    ui->label_10->setText(output);
+
     emit valueChanged(time);
 
 }
@@ -43,17 +48,14 @@ void MainWindow::on_ButtonSizeS_clicked()
     ui->spinBox->setValue(48);
     calc_time();
 }
-
 void MainWindow::on_ButtonSizeM_clicked()
 {
     ui->spinBox->setValue(58);
 }
-
 void MainWindow::on_ButtonSizeL_clicked()
 {
     ui->spinBox->setValue(68);
 }
-
 void MainWindow::on_ButtonSizeXL_clicked()
 {
     ui->spinBox->setValue(78);
@@ -62,7 +64,6 @@ void MainWindow::on_ButtonSizeOstrich_clicked()
 {
     ui->spinBox->setValue(1500);
 }
-
 void MainWindow::on_spinBox_textChanged(const QString &arg1)
 {
     ui->ButtonSizeS->setAutoExclusive(false);
@@ -98,6 +99,7 @@ void MainWindow::on_spinBox_textChanged(const QString &arg1)
     if ((1300 <= i) && (i < 1900)){
         ui->ButtonSizeOstrich->setChecked(true);
     }
+    calc_time();
 }
 
 void MainWindow::on_start_Timer_clicked()
@@ -110,6 +112,75 @@ void MainWindow::on_start_Timer_clicked()
 
 void MainWindow::on_altitude_textChanged(const QString &arg1)
 {
-
+    int i = ui->altitude->value();
+    ui->comboBox->setCurrentIndex(3);
+    if (i==115)
+    {
+        ui->comboBox->setCurrentIndex(0);
+    }
+    if (i==250)
+    {
+        ui->comboBox->setCurrentIndex(1);
+    }
+    if (i==2960)
+    {
+        ui->comboBox->setCurrentIndex(2);
+    }
+    calc_time();
 }
 
+
+void MainWindow::on_radioButtonKuehlschrank_clicked()
+{
+    ui->spinBoxStarttemp->setValue(7);
+}
+void MainWindow::on_radioButtonRaumtemperatur_clicked()
+{
+    ui->spinBoxStarttemp->setValue(20);
+}
+void MainWindow::on_spinBoxStarttemp_textChanged(const QString &arg1)
+{
+    ui->radioButtonRaumtemperatur->setAutoExclusive(false);
+    ui->radioButtonKuehlschrank->setAutoExclusive(false);
+    ui->radioButtonRaumtemperatur->setChecked(false);
+    ui->radioButtonKuehlschrank->setChecked(false);
+    ui->radioButtonRaumtemperatur->setAutoExclusive(true);
+    ui->radioButtonKuehlschrank->setAutoExclusive(true);
+
+
+    int i = ui->spinBoxStarttemp->value();
+
+    if (i == 20){
+        ui->radioButtonRaumtemperatur->setChecked(true);
+    }
+    if (i == 7){
+        ui->radioButtonKuehlschrank->setChecked(true);
+    }
+    calc_time();
+}
+
+void MainWindow::on_comboBox_currentIndexChanged(int index)
+{
+    if (index == 0) // Karlsruhe
+    {
+        ui->altitude->setValue(115);
+    }
+    if (index == 1) // Stuttgart
+    {
+        ui->altitude->setValue(250);
+    }
+    if (index == 2) // Zugspitze
+    {
+        ui->altitude->setValue(2960);
+    }
+    if (index == 3) // Benutzerdefiniert
+    {
+
+    }
+    calc_time();
+}
+
+void MainWindow::on_dial_valueChanged(int value)
+{
+    calc_time();
+}

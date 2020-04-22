@@ -31,6 +31,8 @@ private slots:
 
     void on_spinBox_textChanged(const QString &arg1);
 
+    void on_spinBoxStarttemp_textChanged(const QString &arg1);
+
     void on_ButtonSizeOstrich_clicked();
 
     void calc_time();
@@ -38,6 +40,14 @@ private slots:
     void on_start_Timer_clicked();
 
     void on_altitude_textChanged(const QString &arg1);
+
+    void on_radioButtonRaumtemperatur_clicked();
+
+    void on_radioButtonKuehlschrank_clicked();
+
+    void on_comboBox_currentIndexChanged(int index);
+
+    void on_dial_valueChanged(int value);
 
 private:
     Ui::MainWindow *ui;
