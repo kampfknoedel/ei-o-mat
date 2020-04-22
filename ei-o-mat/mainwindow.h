@@ -18,7 +18,7 @@ public:
 public slots:
 
 signals:
-    void valueChanged(qreal boilingtime);
+    void valueChanged(qreal time);
 
 private slots:
     void on_ButtonSizeS_clicked();
@@ -37,7 +37,7 @@ private slots:
 
     void on_start_Timer_clicked();
 
-    void on_calculatedTime_overflow();
+    void on_altitude_textChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;

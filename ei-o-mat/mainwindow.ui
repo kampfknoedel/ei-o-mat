@@ -337,7 +337,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QSpinBox" name="spinBox_2"/>
+      <widget class="QSpinBox" name="altitude"/>
      </item>
      <item>
       <widget class="QComboBox" name="comboBox">

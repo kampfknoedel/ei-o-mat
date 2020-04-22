@@ -1,19 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "Eiertimer.h"
-#include <QPushButton>
-#include <QString>
-#include <QStringBuilder>
-#include <QLabel>
+#include <QWidget>
 #include <QtMath>
-#include <QComboBox>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
 }
 
 MainWindow::~MainWindow()
@@ -30,6 +26,8 @@ void MainWindow::calc_time()
     qreal T_wasser = 0;     // Berechung in abhängigkeit von der eingabe hähe über Null
     qreal T_start = 0;      // Berechung in abhängigkeit der eingabe (Temperatur oder Kühlschrank)
     qreal T_ende = 0;       // Berechung in abhängigkeit von Garzustand des Eigelbs
+    qreal Altitude=ui->altitude->value();
+    qDebug() <<Altitude*mass<<endl;
 
     qreal time = L*qPow(mass, (2/3)) * qLn(0.76*(T_wasser-T_start)/(T_wasser-T_ende));
     QString output;
@@ -110,9 +108,8 @@ void MainWindow::on_start_Timer_clicked()
     w->show();
 }
 
-
-
-void MainWindow::on_calculatedTime_overflow()
+void MainWindow::on_altitude_textChanged(const QString &arg1)
 {
 
 }
+
