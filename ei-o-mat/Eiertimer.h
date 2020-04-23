@@ -21,7 +21,8 @@ public:
 public:
     explicit Eiertimer(QWidget *parent = 0);
     ~Eiertimer();
-
+public slots:
+    void receiveTime(QTime time);
 
 protected slots:
     void updateTime();

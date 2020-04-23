@@ -10,11 +10,15 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    connect(MainWindow::TimeChanged,SIGNAL(TimeChanged(QTime)),Eiertimer,SLOT(receiveTime(QTime)));
+    connect()
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+
 }
 
 
@@ -29,14 +33,19 @@ void MainWindow::calc_time()
 
     //qreal Altitude=ui->altitude->value();
     //qDebug() <<Altitude*mass<<endl;
+    qreal massehoch23 = qPow(mass, (2/3));
+    qreal time = L*massehoch23 * qLn(0.76*(T_wasser-T_start)/(T_wasser-T_ende));
+    time = 305;
+    QTime time2(0,0,0);
+    QTime time3 = time2.addSecs(time);
 
-    qreal time = L*qPow(mass, (2/3)) * qLn(0.76*(T_wasser-T_start)/(T_wasser-T_ende));
     QString output;
     output.number(time);
 
     ui->calculatedTime->display(time);
+    qreal i = ui->label_10->
 
-    ui->label_10->setText(output);
+    ui->label_10->setText(time3.toString("mm:ss"));
 
     emit valueChanged(time);
 
