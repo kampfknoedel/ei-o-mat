@@ -39,8 +39,6 @@ private slots:
 
     void on_spinBoxStarttemp_textChanged(const QString &arg1);
 
-    void on_ButtonSizeOstrich_clicked();
-
     void calc_time();
 
     void on_start_Timer_clicked();

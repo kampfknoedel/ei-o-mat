@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>486</width>
-    <height>1153</height>
+    <width>638</width>
+    <height>1492</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -49,8 +49,8 @@
      <rect>
       <x>50</x>
       <y>70</y>
-      <width>394</width>
-      <height>1023</height>
+      <width>554</width>
+      <height>1370</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -82,6 +82,9 @@
            <property name="text">
             <string>Größe S</string>
            </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup_2</string>
+           </attribute>
           </widget>
          </item>
          <item>
@@ -98,6 +101,9 @@
            <property name="checked">
             <bool>true</bool>
            </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup_2</string>
+           </attribute>
           </widget>
          </item>
          <item>
@@ -111,6 +117,9 @@
            <property name="text">
             <string>Größe L</string>
            </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup_2</string>
+           </attribute>
           </widget>
          </item>
          <item>
@@ -124,19 +133,9 @@
            <property name="text">
             <string>Größe XL</string>
            </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="ButtonSizeOstrich">
-           <property name="font">
-            <font>
-             <family>MS Shell Dlg 2</family>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Straußen Ei</string>
-           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup_2</string>
+           </attribute>
           </widget>
          </item>
         </layout>
@@ -171,10 +170,10 @@
             <string/>
            </property>
            <property name="minimum">
-            <number>10</number>
+            <number>43</number>
            </property>
            <property name="maximum">
-            <number>2000</number>
+            <number>83</number>
            </property>
            <property name="value">
             <number>58</number>
@@ -233,6 +232,9 @@
            <property name="text">
             <string>Kühlschrank</string>
            </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup</string>
+           </attribute>
           </widget>
          </item>
          <item>
@@ -249,6 +251,9 @@
            <property name="checked">
             <bool>true</bool>
            </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup</string>
+           </attribute>
           </widget>
          </item>
         </layout>
@@ -439,52 +444,188 @@
         </layout>
        </item>
        <item>
-        <widget class="QDial" name="dial">
+        <widget class="QWidget" name="widget" native="true">
          <property name="minimumSize">
           <size>
-           <width>100</width>
-           <height>300</height>
+           <width>550</width>
+           <height>320</height>
           </size>
          </property>
-         <property name="mouseTracking">
-          <bool>true</bool>
-         </property>
-         <property name="tabletTracking">
-          <bool>false</bool>
-         </property>
-         <property name="contextMenuPolicy">
-          <enum>Qt::CustomContextMenu</enum>
-         </property>
-         <property name="acceptDrops">
-          <bool>false</bool>
-         </property>
-         <property name="inputMethodHints">
-          <set>Qt::ImhNone</set>
-         </property>
-         <property name="minimum">
-          <number>62</number>
-         </property>
-         <property name="maximum">
-          <number>82</number>
-         </property>
-         <property name="pageStep">
-          <number>2</number>
-         </property>
-         <property name="value">
-          <number>67</number>
-         </property>
-         <property name="sliderPosition">
-          <number>67</number>
-         </property>
-         <property name="invertedAppearance">
-          <bool>false</bool>
-         </property>
-         <property name="wrapping">
-          <bool>false</bool>
-         </property>
-         <property name="notchesVisible">
-          <bool>true</bool>
-         </property>
+         <widget class="QDial" name="dial">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>-20</y>
+            <width>251</width>
+            <height>311</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>300</height>
+           </size>
+          </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
+          <property name="tabletTracking">
+           <bool>false</bool>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::CustomContextMenu</enum>
+          </property>
+          <property name="acceptDrops">
+           <bool>false</bool>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhNone</set>
+          </property>
+          <property name="minimum">
+           <number>62</number>
+          </property>
+          <property name="maximum">
+           <number>82</number>
+          </property>
+          <property name="pageStep">
+           <number>2</number>
+          </property>
+          <property name="value">
+           <number>72</number>
+          </property>
+          <property name="sliderPosition">
+           <number>72</number>
+          </property>
+          <property name="tracking">
+           <bool>true</bool>
+          </property>
+          <property name="invertedAppearance">
+           <bool>false</bool>
+          </property>
+          <property name="wrapping">
+           <bool>false</bool>
+          </property>
+          <property name="notchesVisible">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_10">
+          <property name="geometry">
+           <rect>
+            <x>40</x>
+            <y>250</y>
+            <width>141</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Flüssiges Eigelb</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_11">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>30</y>
+            <width>141</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Weiches Eigelb</string>
+          </property>
+         </widget>
+         <widget class="Line" name="line_2">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>60</y>
+            <width>141</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="midLineWidth">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_12">
+          <property name="geometry">
+           <rect>
+            <x>410</x>
+            <y>100</y>
+            <width>141</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Hartes Eigelb</string>
+          </property>
+         </widget>
+         <widget class="Line" name="line_3">
+          <property name="geometry">
+           <rect>
+            <x>40</x>
+            <y>240</y>
+            <width>171</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="midLineWidth">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+         <widget class="Line" name="line_4">
+          <property name="geometry">
+           <rect>
+            <x>400</x>
+            <y>110</y>
+            <width>131</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="midLineWidth">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
         </widget>
        </item>
       </layout>
@@ -542,6 +683,13 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Eier nach dem Kochen unbedingt in kaltem Wasser abschrecken. </string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
   </widget>
@@ -550,8 +698,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>486</width>
-     <height>24</height>
+     <width>638</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
@@ -559,4 +707,8 @@
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
+ </buttongroups>
 </ui>

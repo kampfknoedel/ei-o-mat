@@ -16,7 +16,7 @@ Eingabefenster::Eingabefenster(QWidget *parent)
     const bool connected = connect(this, SIGNAL(TimeChanged(QTime)), eiertimer, SLOT(receiveTime(QTime)));
     qDebug() << "Connection established?" << connected;
 
-    emit on_dial_valueChanged(68);
+    emit on_dial_valueChanged(ui->dial->value());
 
 }
 
@@ -76,27 +76,20 @@ void Eingabefenster::on_ButtonSizeXL_clicked()
 {
     ui->spinBox->setValue(78);
 }
-void Eingabefenster::on_ButtonSizeOstrich_clicked()
-{
-    ui->spinBox->setValue(1500);
-}
 void Eingabefenster::on_spinBox_textChanged(const QString &arg1)
 {
     ui->ButtonSizeS->setAutoExclusive(false);
     ui->ButtonSizeM->setAutoExclusive(false);
     ui->ButtonSizeL->setAutoExclusive(false);
     ui->ButtonSizeXL->setAutoExclusive(false);
-    ui->ButtonSizeOstrich->setAutoExclusive(false);
     ui->ButtonSizeS->setChecked(false);
     ui->ButtonSizeM->setChecked(false);
     ui->ButtonSizeL->setChecked(false);
     ui->ButtonSizeXL->setChecked(false);
-    ui->ButtonSizeOstrich->setChecked(false);
     ui->ButtonSizeS->setAutoExclusive(true);
     ui->ButtonSizeM->setAutoExclusive(true);
     ui->ButtonSizeL->setAutoExclusive(true);
     ui->ButtonSizeXL->setAutoExclusive(true);
-    ui->ButtonSizeOstrich->setAutoExclusive(true);
 
     int i = ui->spinBox->value();
 
@@ -111,9 +104,6 @@ void Eingabefenster::on_spinBox_textChanged(const QString &arg1)
     }
     if ((73 <= i) && (i < 83)){
         ui->ButtonSizeXL->setChecked(true);
-    }
-    if ((1300 <= i) && (i < 1900)){
-        ui->ButtonSizeOstrich->setChecked(true);
     }
     calc_time();
 }
@@ -202,6 +192,7 @@ void Eingabefenster::on_dial_valueChanged(int value)
     string.setNum(value, 10);
     string.insert(string.length(), QString(" °C"));
     ui->label_targettemp->setText(string);
+
     calc_time();
 
 }

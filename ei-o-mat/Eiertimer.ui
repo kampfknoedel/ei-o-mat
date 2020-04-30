@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>259</width>
-    <height>130</height>
+    <width>387</width>
+    <height>131</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>251</width>
+     <width>375</width>
      <height>121</height>
     </rect>
    </property>
@@ -81,6 +81,13 @@
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_9">
+      <property name="text">
+       <string>Eier nach dem Kochen unbedingt in kaltem Wasser abschrecken. </string>
       </property>
      </widget>
     </item>
