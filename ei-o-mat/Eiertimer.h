@@ -18,6 +18,7 @@ class Eiertimer : public QWidget
 
 public:
     QTime *displayTime = new QTime;
+    QTime *displayTimeAlt = new QTime;
     QTimer *timer = new QTimer;
     bool buttonStart = true;
 
@@ -31,6 +32,8 @@ protected slots:
 private slots:
     void on_startButton_clicked();
     void receiveTime(QTime time);
+
+    void on_resetButton_clicked();
 
 private:
     Ui::Eiertimer *ui;

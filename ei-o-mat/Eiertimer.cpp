@@ -26,17 +26,17 @@ void Eiertimer::on_startButton_clicked()
     {
         buttonStart = false;
         ui->startButton->setText("Stop");
-        ui->timeEdit->setEnabled(false);
-        *displayTime = ui->timeEdit->time();
-        ui->timerLabel->setText(displayTime->toString("mm:ss"));
+      //  ui->timeEdit->setEnabled(false);
+      //  *displayTime = ui->timeEdit->time();
+        ui->calculatedTime->display(displayTime->toString("mm:ss"));
         timer->start(1000);
     }
     else
     {
         buttonStart = true;
         ui->startButton->setText("Start");
-        ui->timeEdit->setEnabled(true);
-        ui->timeEdit->setTime(*displayTime);
+     //   ui->timeEdit->setEnabled(true);
+   //     ui->timeEdit->setTime(*displayTime);
         timer->stop();
     }
 }
@@ -45,7 +45,7 @@ void Eiertimer::updateTime()
 {
     QTime newTime = displayTime->addSecs(-1);
     displayTime->setHMS(newTime.hour(),newTime.minute(),newTime.second());
-    ui->timerLabel->setText(displayTime->toString("mm:ss"));
+    ui->calculatedTime->display(displayTime->toString("mm:ss"));
     if(displayTime->hour() != 0 ||
             displayTime->minute() != 0 ||
             displayTime->second() != 0)
@@ -61,5 +61,18 @@ void Eiertimer::updateTime()
 }
 void Eiertimer::receiveTime(QTime time)
 {
-    ui->timeEdit->setTime(time); //(time.toString("mm:ss"));
+    //ui->timeEdit->setTime(time);
+    *displayTime = time;
+    *displayTimeAlt = time;
+    ui->calculatedTime->display(displayTime->toString("mm:ss"));
+}
+
+void Eiertimer::on_resetButton_clicked()
+{
+    timer->stop();
+    *displayTime = *displayTimeAlt;
+    ui->startButton->setText("Start");
+    ui->calculatedTime->display(displayTime->toString("mm:ss"));
+    buttonStart = true;
+
 }

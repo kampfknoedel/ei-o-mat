@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>638</width>
-    <height>1492</height>
+    <width>572</width>
+    <height>1107</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -499,7 +499,7 @@
           <widget class="QLabel" name="label_10">
            <property name="geometry">
             <rect>
-             <x>40</x>
+             <x>50</x>
              <y>250</y>
              <width>141</width>
              <height>31</height>
@@ -672,8 +672,15 @@
       </item>
       <item>
        <widget class="QLabel" name="label_9">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
-         <string>Eier nach dem Kochen unbedingt in kaltem Wasser abschrecken. </string>
+         <string>Eier nach dem Kochen in kaltem Wasser abschrecken. </string>
         </property>
        </widget>
       </item>
@@ -681,22 +688,12 @@
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>638</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
