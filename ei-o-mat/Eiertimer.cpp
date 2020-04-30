@@ -1,14 +1,18 @@
-#include "Eiertimer.h"
-#include "ui_Eiertimer.h"
-#include "mainwindow.h"
+#include "eiertimer.h"
+#include "ui_eiertimer.h"
+
 
 Eiertimer::Eiertimer(QWidget *parent) :
-    QMainWindow(parent),
+    QWidget(parent),
     ui(new Ui::Eiertimer)
 {
     ui->setupUi(this);
     connect(timer,SIGNAL(timeout()), this, SLOT(updateTime()));
     timer->setSingleShot(true);
+
+    //const bool connected = connect(eingabefenster, &Eingabefenster::TimeChanged, this, &Eiertimer::receiveTime);
+
+    //qDebug() << "Connection established?" << connected;
 }
 
 Eiertimer::~Eiertimer()
@@ -23,10 +27,8 @@ void Eiertimer::on_startButton_clicked()
         buttonStart = false;
         ui->startButton->setText("Stop");
         ui->timeEdit->setEnabled(false);
-        //*displayTime = ui->timeEdit->time();
-        //*displayTime = ui->timeEdit->BoilingTime;
-        //QTime time = MainWindow::BoilingTime;
-        //ui->timerLabel->setText(time.toString("mm:ss"));
+        *displayTime = ui->timeEdit->time();
+        ui->timerLabel->setText(displayTime->toString("mm:ss"));
         timer->start(1000);
     }
     else
@@ -59,5 +61,5 @@ void Eiertimer::updateTime()
 }
 void Eiertimer::receiveTime(QTime time)
 {
-    ui->timerLabel->setText(time.toString("mm:ss"));
+    ui->timeEdit->setTime(time); //(time.toString("mm:ss"));
 }

@@ -4,12 +4,15 @@
 #include <QMainWindow>
 #include <QTime>
 #include <QTimer>
+#include <QWidget>
+
+//#include "eingabefenster.h"
 
 namespace Ui {
 class Eiertimer;
 }
 
-class Eiertimer : public QMainWindow
+class Eiertimer : public QWidget
 {
     Q_OBJECT
 
@@ -19,19 +22,19 @@ public:
     bool buttonStart = true;
 
 public:
-    explicit Eiertimer(QWidget *parent = 0);
+    explicit Eiertimer(QWidget *parent = nullptr);
     ~Eiertimer();
-public slots:
-    void receiveTime(QTime time);
 
 protected slots:
     void updateTime();
 
 private slots:
     void on_startButton_clicked();
+    void receiveTime(QTime time);
 
 private:
     Ui::Eiertimer *ui;
+   // Eingabefenster* eingabefenster;
 };
 
 #endif // EIERTIMER_H

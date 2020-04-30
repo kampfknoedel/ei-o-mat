@@ -1,29 +1,31 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include "Eiertimer.h"
+#include "eingabefenster.h"
+#include "ui_eingabefenster.h"
+
+
 #include <QWidget>
 #include <QtMath>
 #include <QDebug>
 
-MainWindow::MainWindow(QWidget *parent)
+Eingabefenster::Eingabefenster(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::Eingabefenster)
 {
     ui->setupUi(this);
+    eiertimer = new Eiertimer;
 
-    connect(MainWindow::TimeChanged,SIGNAL(TimeChanged(QTime)),Eiertimer,SLOT(receiveTime(QTime)));
-    connect()
+    const bool connected = connect(this, SIGNAL(TimeChanged(QTime)), eiertimer, SLOT(receiveTime(QTime)));
+    qDebug() << "Connection established?" << connected;
+
+    emit on_dial_valueChanged(68);
+
 }
 
-MainWindow::~MainWindow()
+Eingabefenster::~Eingabefenster()
 {
     delete ui;
-
 }
 
-
-
-void MainWindow::calc_time()
+void Eingabefenster::calc_time()
 {
     qreal L = 0.47311;   // Constante abhängig von Wärmewiderstand und Wärmekapazität von Eigelb und Eiklar
     qreal mass = ui->spinBox->value();
@@ -33,47 +35,52 @@ void MainWindow::calc_time()
 
     //qreal Altitude=ui->altitude->value();
     //qDebug() <<Altitude*mass<<endl;
-    qreal massehoch23 = qPow(mass, (2/3));
+    qreal massehoch23 = qPow(mass, (2.0/3.0));
+
     qreal time = L*massehoch23 * qLn(0.76*(T_wasser-T_start)/(T_wasser-T_ende));
-    time = 305;
+
+
+    qDebug() << "T_wasser" << T_wasser;
+    qDebug() << "T_start" << T_start;
+    qDebug() << "T_ende" << T_ende;
+    qDebug() << "Ln: " << qLn(0.76*(T_wasser-T_start)/(T_wasser-T_ende));
+    qDebug() << "Zeit in Minuten" << time;
+
     QTime time2(0,0,0);
-    QTime time3 = time2.addSecs(time);
+    QTime time3 = time2.addSecs(time*60);
 
     QString output;
     output.number(time);
 
-    ui->calculatedTime->display(time);
-    qreal i = ui->label_10->
-
-    ui->label_10->setText(time3.toString("mm:ss"));
-
+    ui->calculatedTime->display(time3.toString("mm:ss"));
+    //ui->label_10->setText(time3.toString("mm:ss"));
     emit valueChanged(time);
-
+    emit TimeChanged(time3);
 }
 
 
-void MainWindow::on_ButtonSizeS_clicked()
+void Eingabefenster::on_ButtonSizeS_clicked()
 {
     ui->spinBox->setValue(48);
     calc_time();
 }
-void MainWindow::on_ButtonSizeM_clicked()
+void Eingabefenster::on_ButtonSizeM_clicked()
 {
     ui->spinBox->setValue(58);
 }
-void MainWindow::on_ButtonSizeL_clicked()
+void Eingabefenster::on_ButtonSizeL_clicked()
 {
     ui->spinBox->setValue(68);
 }
-void MainWindow::on_ButtonSizeXL_clicked()
+void Eingabefenster::on_ButtonSizeXL_clicked()
 {
     ui->spinBox->setValue(78);
 }
-void MainWindow::on_ButtonSizeOstrich_clicked()
+void Eingabefenster::on_ButtonSizeOstrich_clicked()
 {
     ui->spinBox->setValue(1500);
 }
-void MainWindow::on_spinBox_textChanged(const QString &arg1)
+void Eingabefenster::on_spinBox_textChanged(const QString &arg1)
 {
     ui->ButtonSizeS->setAutoExclusive(false);
     ui->ButtonSizeM->setAutoExclusive(false);
@@ -111,15 +118,15 @@ void MainWindow::on_spinBox_textChanged(const QString &arg1)
     calc_time();
 }
 
-void MainWindow::on_start_Timer_clicked()
+void Eingabefenster::on_start_Timer_clicked()
 {
     //window();
-    QWidget *w=new Eiertimer;
-    Eiertimer *neuesFester = new Eiertimer(w);
-    w->show();
+    //QWidget *w=new Eiertimer;
+    emit(calc_time());
+    eiertimer->show();
 }
 
-void MainWindow::on_altitude_textChanged(const QString &arg1)
+void Eingabefenster::on_altitude_textChanged(const QString &arg1)
 {
     int i = ui->altitude->value();
     ui->comboBox->setCurrentIndex(3);
@@ -139,15 +146,15 @@ void MainWindow::on_altitude_textChanged(const QString &arg1)
 }
 
 
-void MainWindow::on_radioButtonKuehlschrank_clicked()
+void Eingabefenster::on_radioButtonKuehlschrank_clicked()
 {
     ui->spinBoxStarttemp->setValue(7);
 }
-void MainWindow::on_radioButtonRaumtemperatur_clicked()
+void Eingabefenster::on_radioButtonRaumtemperatur_clicked()
 {
     ui->spinBoxStarttemp->setValue(20);
 }
-void MainWindow::on_spinBoxStarttemp_textChanged(const QString &arg1)
+void Eingabefenster::on_spinBoxStarttemp_textChanged(const QString &arg1)
 {
     ui->radioButtonRaumtemperatur->setAutoExclusive(false);
     ui->radioButtonKuehlschrank->setAutoExclusive(false);
@@ -168,7 +175,7 @@ void MainWindow::on_spinBoxStarttemp_textChanged(const QString &arg1)
     calc_time();
 }
 
-void MainWindow::on_comboBox_currentIndexChanged(int index)
+void Eingabefenster::on_comboBox_currentIndexChanged(int index)
 {
     if (index == 0) // Karlsruhe
     {
@@ -189,7 +196,12 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
     calc_time();
 }
 
-void MainWindow::on_dial_valueChanged(int value)
+void Eingabefenster::on_dial_valueChanged(int value)
 {
+    QString string;
+    string.setNum(value, 10);
+    string.insert(string.length(), QString(" °C"));
+    ui->label_targettemp->setText(string);
     calc_time();
+
 }

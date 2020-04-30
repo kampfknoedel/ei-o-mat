@@ -1,28 +1,31 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
-#include <QString>
+#ifndef EINGABEFENSTER_H
+#define EINGABEFENSTER_H
+
+#include <QWidget>
+#include <QtMath>
+#include <QDebug>
 #include <QMainWindow>
+#include <QString>
 #include <QTime>
 
+#include "eiertimer.h"
+
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui { class Eingabefenster; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
+class Eingabefenster : public QMainWindow
 {
     Q_OBJECT
-public:
-    QTime *BoilingTime = new QTime;
-public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
 
-
-public slots:
+public:
+    Eingabefenster(QWidget *parent = nullptr);
+    ~Eingabefenster();
 
 signals:
     void valueChanged(qreal time);
     void TimeChanged(QTime);
+
 private slots:
     void on_ButtonSizeS_clicked();
 
@@ -52,9 +55,11 @@ private slots:
 
     void on_dial_valueChanged(int value);
 
+
+
 private:
-    Ui::MainWindow *ui;
+    Ui::Eingabefenster *ui;
+    Eiertimer* eiertimer;
+
 };
-#endif // MAINWINDOW_H
-
-
+#endif // EINGABEFENSTER_H
