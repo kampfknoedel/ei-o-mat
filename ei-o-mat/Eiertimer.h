@@ -5,6 +5,7 @@
 #include <QTime>
 #include <QTimer>
 #include <QWidget>
+#include <QSound>
 
 //#include "eingabefenster.h"
 

@@ -54,6 +54,7 @@ void Eiertimer::updateTime()
     }
     else
     {
+        QSound::play("C:\\Users\\Christian Kraft\\Documents\\GitHub\\ei-o-mat\\ei-o-mat\\ei-o-mat\\ei-o-mat\\Alarm.wav");
         buttonStart = true;
         ui->startButton->setText("Start");
         timer->stop();
