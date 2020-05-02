@@ -61,7 +61,7 @@ void Eingabefenster::calc_time()
     qDebug() << "T_ende" << T_ende;
     qDebug() << "Ln: " << qLn(0.76*(T_wasser-T_start)/(T_wasser-T_ende));
     qDebug() << "Zeit in Minuten" << time;
-    time = 0.06;
+    //time = 0.06;
     QTime time2(0,0,0);
     QTime time3 = time2.addSecs(time*60);
 

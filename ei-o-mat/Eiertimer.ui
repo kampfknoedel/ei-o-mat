@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>488</width>
-    <height>194</height>
+    <width>482</width>
+    <height>196</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -124,6 +124,13 @@
        </property>
        <property name="text">
         <string>Eier nach dem Kochen in kaltem Wasser abschrecken. </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_5sec">
+       <property name="text">
+        <string>Wert auf 5 Sekunden setzen (zu Debug zwecken)</string>
        </property>
       </widget>
      </item>

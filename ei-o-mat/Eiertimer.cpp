@@ -28,6 +28,7 @@ void Eiertimer::on_startButton_clicked()
         ui->startButton->setText("Stop");
       //  ui->timeEdit->setEnabled(false);
       //  *displayTime = ui->timeEdit->time();
+
         *displayTime = *displayTimeAlt;
         ui->calculatedTime->display(displayTime->toString("mm:ss"));
         timer->start(1000);
@@ -83,4 +84,12 @@ void Eiertimer::on_resetButton_clicked()
     ui->calculatedTime->display(displayTime->toString("mm:ss"));
     buttonStart = true;
 
+}
+
+void Eiertimer::on_pushButton_5sec_clicked()
+{
+    QTime time(0,0,5);
+    *displayTimeAlt = time;
+    *displayTime = *displayTimeAlt;
+    ui->calculatedTime->display(displayTime->toString("mm:ss"));
 }

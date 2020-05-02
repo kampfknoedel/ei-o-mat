@@ -39,6 +39,8 @@ private slots:
     void receiveDir(QString dir);
     void on_resetButton_clicked();
 
+    void on_pushButton_5sec_clicked();
+
 private:
     Ui::Eiertimer *ui;
    // Eingabefenster* eingabefenster;
