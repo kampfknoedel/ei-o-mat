@@ -15,8 +15,24 @@ Eingabefenster::Eingabefenster(QWidget *parent)
 
     const bool connected = connect(this, SIGNAL(TimeChanged(QTime)), eiertimer, SLOT(receiveTime(QTime)));
     qDebug() << "Connection established?" << connected;
-
+    connect(this, SIGNAL(dirChanged(QString)), eiertimer, SLOT(receiveDir(QString)));
     emit on_dial_valueChanged(ui->dial->value());
+
+
+    QDir dir(QCoreApplication::applicationDirPath());
+    dir.cdUp();
+    dir.cd("ei-o-mat");
+    QStringList filters;
+    filters << "*.wav" << "*.WAV";
+    dir.setNameFilters(filters);
+    QStringList ordnerinhalt;
+    ordnerinhalt = dir.entryList();
+    ui->comboBox_2->addItems(ordnerinhalt);
+
+    dir_project=dir;
+    emit on_comboBox_2_currentTextChanged(ordnerinhalt[0]);
+    qDebug() << dir;
+    qDebug() << ordnerinhalt;
 
 }
 
@@ -45,7 +61,7 @@ void Eingabefenster::calc_time()
     qDebug() << "T_ende" << T_ende;
     qDebug() << "Ln: " << qLn(0.76*(T_wasser-T_start)/(T_wasser-T_ende));
     qDebug() << "Zeit in Minuten" << time;
-
+    time = 0.06;
     QTime time2(0,0,0);
     QTime time3 = time2.addSecs(time*60);
 
@@ -56,6 +72,7 @@ void Eingabefenster::calc_time()
     //ui->label_10->setText(time3.toString("mm:ss"));
     emit valueChanged(time);
     emit TimeChanged(time3);
+
 }
 
 
@@ -195,4 +212,11 @@ void Eingabefenster::on_dial_valueChanged(int value)
 
     calc_time();
 
+}
+
+void Eingabefenster::on_comboBox_2_currentTextChanged(const QString &arg1)
+{
+    QDir dir_alarm = dir_project;
+    emit dirChanged(dir_alarm.filePath(arg1));
+    qDebug() << dir_alarm.filePath(arg1);
 }

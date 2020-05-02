@@ -6,6 +6,7 @@
 #include <QTimer>
 #include <QWidget>
 #include <QSound>
+#include <QDir>
 
 //#include "eingabefenster.h"
 
@@ -22,6 +23,8 @@ public:
     QTime *displayTimeAlt = new QTime;
     QTimer *timer = new QTimer;
     bool buttonStart = true;
+    QString dir_alarm;
+
 
 public:
     explicit Eiertimer(QWidget *parent = nullptr);
@@ -33,7 +36,7 @@ protected slots:
 private slots:
     void on_startButton_clicked();
     void receiveTime(QTime time);
-
+    void receiveDir(QString dir);
     void on_resetButton_clicked();
 
 private:

@@ -28,6 +28,7 @@ void Eiertimer::on_startButton_clicked()
         ui->startButton->setText("Stop");
       //  ui->timeEdit->setEnabled(false);
       //  *displayTime = ui->timeEdit->time();
+        *displayTime = *displayTimeAlt;
         ui->calculatedTime->display(displayTime->toString("mm:ss"));
         timer->start(1000);
     }
@@ -54,7 +55,9 @@ void Eiertimer::updateTime()
     }
     else
     {
-        QSound::play("Alarm.wav");
+
+
+        QSound::play(dir_alarm);
         buttonStart = true;
         ui->startButton->setText("Start");
         timer->stop();
@@ -66,6 +69,10 @@ void Eiertimer::receiveTime(QTime time)
     *displayTime = time;
     *displayTimeAlt = time;
     ui->calculatedTime->display(displayTime->toString("mm:ss"));
+}
+void Eiertimer::receiveDir(QString dir)
+{
+    dir_alarm = dir;
 }
 
 void Eiertimer::on_resetButton_clicked()

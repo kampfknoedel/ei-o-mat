@@ -17,6 +17,8 @@ QT_END_NAMESPACE
 class Eingabefenster : public QMainWindow
 {
     Q_OBJECT
+public:
+    QDir dir_project;
 
 public:
     Eingabefenster(QWidget *parent = nullptr);
@@ -25,6 +27,7 @@ public:
 signals:
     void valueChanged(qreal time);
     void TimeChanged(QTime);
+    void dirChanged(QString);
 
 private slots:
     void on_ButtonSizeS_clicked();
@@ -54,6 +57,8 @@ private slots:
     void on_dial_valueChanged(int value);
 
 
+
+    void on_comboBox_2_currentTextChanged(const QString &arg1);
 
 private:
     Ui::Eingabefenster *ui;

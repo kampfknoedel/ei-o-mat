@@ -650,6 +650,29 @@
        </widget>
       </item>
       <item>
+       <widget class="QLabel" name="label_13">
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Timer Sound auswählen (.wav datei in QT PRojektordner):</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox_2">
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+        <property name="currentText">
+         <string>keine .wav Datei im QT Projektordner</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="start_Timer">
         <property name="minimumSize">
          <size>
