@@ -28,9 +28,9 @@ Eingabefenster::Eingabefenster(QWidget *parent)
     QStringList ordnerinhalt;
     ordnerinhalt = dir.entryList();
     ui->comboBox_2->addItems(ordnerinhalt);
-
+    ui->comboBox_2->addItem("kein Sound ausgewählt");
     dir_project=dir;
-    emit on_comboBox_2_currentTextChanged(ordnerinhalt[0]);
+    emit on_comboBox_2_currentTextChanged(ui->comboBox_2->currentText());
     qDebug() << dir;
     qDebug() << ordnerinhalt;
 
